@@ -9,18 +9,12 @@
 - help index to get list of all mappings
 - Fix indenting with =G
 
-entering and exiting
-    - vim FILENAME
-    - :q! to quit without saving
-    - :w to save
-    - :wq (alias ZZ)
-
-basic editing
+= Basic Editing =
     - Move with arrows
     - Insert with "i"
     - Back to Normal mode with ESC
 
-vim modes
+= Vim Modes =
     - Normal (ESC) The default. Movement and text operations (copy/paste/deletion)
     - Insert (i) Typing actual text
     - Command Line (:) Enter vim commands. E.g., :help
@@ -28,7 +22,7 @@ vim modes
     - Visual Line (V) Highlight lines
     - Visual Block (C-V) Highlight character blocks
 
-movement and operations
+= Movement and Operations =
     - Motions move the cursor from one position to another in a file.
       Operators modify the text that the cursor moves over.
     - Basic movement: hjkl. Think of j as a downward arrow
@@ -39,27 +33,27 @@ movement and operations
     - The Vim language (simplified): {motion}{operation}
     - Can repeat the last command (motion+operation) with "."
 
-"advanced" movements
+= "Advanced" Movements =
     - Left-right: 0, $, f, F, t, T
     - Up-down: }, {, H, L, gg, G
     - Word motions: w, W, b, B, e, E
 
-combine arbitrary movements with arbitrary operations
+= Combine Arbitrary Movements With Arbitrary Operations =
     - dff
     - dt)
     - yw
 
-shortcut operations
+= Shortcut Operations =
     - dd (delete line)
     - yy (yank current line)
 
-cool ways to enter INSERT mode
+= Cool Ways To Enter INSERT Mode =
     - i, a, I, A, o, O
 
-making vim the default editor
+= making vim the default editor =
     - export EDITOR=vim
 
-yanking (copying) text
+= Yanking (Copying) Text =
     - Like deletions and changes, yanking is applied over some range of
       characters
     - Text is pasted with p (after cursor) or P (before cursor)
@@ -68,11 +62,11 @@ yanking (copying) text
     - What registers are available? :reg
     - Deleting automatically yanks too!
 
-using explicitly named registers
+= Using Explicitly Named Registers =
     - "[x]{d|c|y}{motion}
     - "[x]{p|P}
 
-registers
+= Registers =
     - The unnamed register ". All deletes and yanks go here by default. All
       puts use this register if no other is specified
     - Numbered registers 0-9.
@@ -82,7 +76,7 @@ registers
     - Last search pattern register /
     - [Others]
 
-searching
+= searching =
     - Forwards /{pattern}
     - Backwards ?{pattern}
     - Forwards using current word *
@@ -91,7 +85,7 @@ searching
     - Previous match: N (relative to direction)
     - Works with operations! E.g., dn
 
-find-and-replace
+= find-and-replace =
     - The "normal" way :%s/old/new/gc
     - Regular expressions: TODO
         - Things that need escaping: \( \), \{n}, \+, \=
@@ -107,26 +101,27 @@ find-and-replace
         - \E or \e : End of \U or \L
         - \r : Newline
 
-views: splits
+= views: splits =
     - git d
     - :qall mapped to F2
     - C-W = to equalize buffer windows after resize
     - set mouse=a
     - Moving between C-W {movement}
 
-editing a register
+= editing a register =
     - :let @x='<C-R><C-R>'
     - :let x=a;
 
 scrollbind
 markers
 formatting with gq[movement]
-macros
+= macros =
     - recording
     - replaying
     - editing with "let"
     - "Infinite loops"
     - Incrementing/Decrementing numbers with C-A, C-X
+    - Mitigating against unwanted formatting with :set paste
 
 plugins
     - NERDTree
@@ -135,6 +130,9 @@ plugins
     - ctrlp
     - SnipMate
     - NERDCommenter?
+
+= Plugin Installation =
+* Raw 
 vimdiff
 folds
 tabs

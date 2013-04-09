@@ -1,0 +1,26 @@
+ENTERING AND EXITING
+--------------------
+
+    vim FILENAME
+    "i" to enter INSERT mode and start typing
+    <ESC> to enter NORMAL mode
+    :w to save
+    :q to quit
+    :q! to force quit
+    :wq to write and quit
+
+
+    +--------+      i       +--------+
+    |        |------------->|        |
+    | NORMAL |              | INSERT |
+    |        |<-------------|        |
+    +--------+    <ESC>     +--------+
+       |  ^
+     : |  | <ESC>
+       |  |
+       V  |
+    +---------+
+    |         |
+    | CMDLINE |
+    |         |
+    +---------+
