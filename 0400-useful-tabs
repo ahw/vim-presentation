@@ -1,0 +1,29 @@
+USEFUL - TABS
+-------------
+
+Problem: someone used actual tab characters and you can't find your Zen.
+
+
+From tabs -> spaces
+===================
+
+        :retab (uses default tabstop width to expands tabs to spaces)
+
+		// This function is tabbed with tabs, and it's ugly.
+		function foo() {
+			if (bar) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+
+        // This function is tabbed with spaces
+        function bar() {
+            if (baz) {
+                return true;
+            } else {
+                return false;
+            }
+        }

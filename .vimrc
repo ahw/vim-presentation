@@ -18,8 +18,8 @@ set wildmenu       "For helpful tab completion on say, :vsp <PATH_PREFIX>
 set mouse=a        "Allows the use of the mouse in all modes. Not useful in Mac Terminal
 set cursorline     "Highlights/underlines the current line
 "set cc=80         "Draw a bar at 80 characters
-colorscheme solarized "Common choices: elflord, blue, darkblue, pablo, desert
-set bg=dark
+
+colorscheme elflord
 
 filetype on "Enable filetype detection
 filetype plugin on "Enables filetype-specific plugins
@@ -42,4 +42,9 @@ imap <leader>wq <esc>:wq<CR>
 map <F2> <esc>:qall<CR>
 map <leader>w <esc>:set nowrap<CR>
 
+"Open .pde files as C-types files
 au BufNewFile,BufRead *.pde set filetype=cpp
+
+hi Visual ctermfg=Black
+hi Visual ctermbg=Yellow
+" hi Normal ctermfg=White

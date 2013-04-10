@@ -1,0 +1,14 @@
+PLUGIN INSTALLATION
+-------------------
+
+Unpack plugin files into .vim/.
+
+    unzip plugin.zip ~/.vim/
+
+    vim plugin.vba
+    :source % 
+
+.vimrc needs:
+
+    filetype on
+    filetype plugin on

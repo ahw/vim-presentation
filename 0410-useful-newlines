@@ -1,0 +1,32 @@
+USEFUL - NEWLINES
+-----------------
+
+Problem: Although Vim normally has no problem handling DOS- and
+UNIX-style line endings transparently, sometimes a file has both CRLF (DOS)
+and LF (UNIX) line endings. Whenever a CR appears, Vim will display a ^M
+character.
+
+
+From DOS/UNIX to UNIX
+=====================
+
+    :update
+    :e ++ff=dos
+    :setlocal ff=unix
+    :w
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Vestibulum eu lectus eget mi consequat vestibulum. Aliquam
+    velit ante, commodo at sollicitudin a, congue viverra erat.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Donec tincidunt ipsum vitae odio imperdiet fringilla.
+    Aliquam tortor arcu, sodales a tincidunt in, posuere at
+    tortor.
+
+
+From DOS/UNIX to DOS
+=====================
+
+    :update
+    :e ++ff=dos
+    :w

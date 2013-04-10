@@ -1,0 +1,50 @@
+USEFUL - LINE WRAPPING
+----------------------
+
+    :set wrap
+    :set nowrap
+    :map <leader>w <ESC>:set nowrap<CR>
+
+Executing: SELECT * FROM `performances` WHERE `performances`.`dim_date_id`='benchmark' LIMIT 1;
+
+/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/longjohn/dist/longjohn.js:181
+        throw e;
+              ^
+Error: ER_BAD_FIELD_ERROR: Unknown column 'performances.dim_date_id' in 'where clause'
+    at Sequence._packetToError (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/node_modules/mysql/lib/protocol/sequences/Sequence.js:32:14)
+    at Query.ErrorPacket (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/node_modules/mysql/lib/protocol/sequences/Query.js:78:18)
+    at Protocol._parsePacket (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/node_modules/mysql/lib/protocol/Protocol.js:169:24)
+    at Parser.write (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/node_modules/mysql/lib/protocol/Parser.js:62:12)
+    at Protocol.write (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/node_modules/mysql/lib/protocol/Protocol.js:36:16)
+    at ondata (stream.js:38:26)
+    at EventEmitter.emit (events.js:88:17)
+    at TCP.onread (net.js:403:14)
+    --------------------
+    at Sequence (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/node_modules/mysql/lib/protocol/sequences/Sequence.js:15:21)
+    at new Query (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/node_modules/mysql/lib/protocol/sequences/Query.js:11:12)
+    at Connection.createQuery (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/node_modules/mysql/lib/Connection.js:43:10)
+    at Connection.query (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/node_modules/mysql/lib/Connection.js:90:26)
+    at module.exports.Query.run (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/lib/dialects/mysql/query.js:26:17)
+    at module.exports.execQueueItem (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/lib/dialects/mysql/connector-manager.js:223:21)
+    at module.exports.enqueue (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/lib/dialects/mysql/connector-manager.js:177:25)
+    at adjustCallback (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/node_modules/generic-pool/lib/generic-pool.js:187:7)
+    at exports.Pool.me.acquire (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/node_modules/generic-pool/lib/generic-pool.js:230:15)
+    at module.exports.connect (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/lib/dialects/mysql/connector-manager.js:160:5)
+---------------------------------------------
+    at module.exports.CustomEventEmitter.run (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/lib/emitters/custom-event-emitter.js:14:5)
+    at module.exports.queryAndEmit (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/lib/query-interface.js:276:8)
+    at module.exports.QueryInterface.select (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/lib/query-interface.js:199:25)
+    at module.exports.DAOFactory.find (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/lib/dao-factory.js:212:32)
+    at module.exports.getperformanceByDate (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/src/activities/get_performance.js:21:6)
+    at module.exports.handler (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/src/activities/get_performance.js:9:9)
+    at callbacks (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/express/lib/router/index.js:160:37)
+    at param (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/express/lib/router/index.js:134:11)
+---------------------------------------------
+    at new Server (http.js:1619:10)
+    at exports.createServer (http.js:1636:10)
+    at initializeServer (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/src/app.js:41:10)
+    at /local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/src/app.js:51:5
+    at exports.getCredentialPairs (/local/apollo/package/local_1/Generic/NodeJS-AmazonUtils/NodeJS-AmazonUtils-124.0-0/lib/commonjs/amazon-utils/src/tools/OdinClient.js:99:17)
+    at exports.getMaterialPair (/local/apollo/package/local_1/Generic/NodeJS-AmazonUtils/NodeJS-AmazonUtils-124.0-0/lib/commonjs/amazon-utils/src/tools/OdinClient.js:75:21)
+    at GenericHTTPClient.request.responseHandler (/local/apollo/package/local_1/Generic/NodeJS-AmazonUtils/NodeJS-AmazonUtils-124.0-0/lib/commonjs/amazon-utils/src/common/GenericHTTPClient.js:77:21)
+    at EventEmitter.emit (events.js:115:20)

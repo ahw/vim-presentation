@@ -1,0 +1,20 @@
+MACROS
+------
+
+Macros are just a series of keystrokes saved in a register.
+
+
+    q{a-z} (start recording macro into register {a-z})
+    q      (stop recording macro)
+    @{a-z} (run macro in register {a-z})
+    @@     (run most recently-run macro)
+
+Macros can be recursive!
+
+
+Editing a Register
+==================
+
+    :let @x='andrew'
+    :let @x='C-R C-R {a-z}'
+             -------------
