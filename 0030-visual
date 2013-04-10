@@ -1,0 +1,16 @@
+MOTIONS and OPERATIONS in VISUAL MODE
+-------------------------------------
+
+    Enter v to enter VISUAL mode or V to enter VISUAL LINE mode. Delete,
+    yank, and change work as you'd expect.
+
+    v{motion}{operation}
+    vjjjjjd
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Vestibulum eu lectus eget mi consequat vestibulum. Aliquam
+    velit ante, commodo at sollicitudin a, congue viverra erat.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Donec tincidunt ipsum vitae odio imperdiet fringilla.
+    Aliquam tortor arcu, sodales a tincidunt in, posuere at
+    tortor.

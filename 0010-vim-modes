@@ -1,0 +1,12 @@
+VIM MODES
+---------
+
+    Normal          ESC
+    Insert          i
+    Command Line    :
+    Visual          v
+    Visual Line     V
+    Visual Block    C-V
+
+    Replace         R
+    Execute         Q

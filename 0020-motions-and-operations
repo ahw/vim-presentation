@@ -1,0 +1,39 @@
+MOTIONS and OPERATORS
+---------------------
+
+Motions move the cursor from one place to another. Operations modify the
+text covered by some motion. These all happen in NORMAL mode.
+
+Basic movements
+===============
+
+    h j k l
+
+      ^
+      |
+      |
+     down (like fishing hook)
+
+Operators
+=========
+
+    d y c
+
+Together, a Language
+====================
+
+    {operation}{motion}
+    jj
+    dl
+
+    [count]{operation}{motion}
+    3dj
+
+    [count]{operation}[count]{motion}
+    3d2j == 6dj == d6j
+
+Common Single Line Operations
+=============================
+
+    dd (Delete the current line)
+    yy (Yank the current line)

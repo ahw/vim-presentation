@@ -1,0 +1,14 @@
+const BUCKETS = [
+    {COL:"red",    HEX:"#EE2725", LAB:[52,72,52], RGB:[238,39,37]},
+    {COL:"blue",   HEX:"#3A6CC9", LAB:[47,15,-53], RGB:[58,108,201]}, 
+    {COL:"green",  HEX:"#20AA31", LAB:[61,-59,50], RGB:[32,170,49]}, 
+    {COL:"yellow", HEX:"#FFFF00", LAB:[97,-22,94], RGB:[255,255,0]}, 
+    {COL:"pink",   HEX:"#FF00AE", LAB:[60,98,-15], RGB:[255,0,174]},
+    {COL:"orange", HEX:"#FF8000", LAB:[67,43,74], RGB:[255,128,0]},
+    {COL:"teal",   HEX:"#008080", LAB:[48,-29,-8], RGB:[0,128,128]}, 
+    {COL:"purple", HEX:"#800080", LAB:[30,59,-36], RGB:[128,0,128]}, 
+    {COL:"white",  HEX:"#FFFFFF", LAB:[100,0,0], RGB:[255,255,255]}, 
+    {COL:"black",  HEX:"#000000", LAB:[0,0,0], RGB:[0,0,0]},
+    {COL:"gray",   HEX:"#777777", LAB:[54,0,0], RGB:[119,119,119]},
+    {COL:"brown",  HEX:"#6D2F10", LAB:[28,26,32], RGB:[109,47,16]} 
+];

@@ -1,0 +1,13 @@
+"ADVANCED" MOTIONS
+------------------
+
+Word motions
+============
+
+    w (word motions; splits by alphanumeric, newline, special)
+
+        some thing 123 yeah hallagan@amazon.com yeah
+
+    W (WORD motions; splits by whitespace only)
+
+        some thing 123 yeah hallagan@amazon.com yeah

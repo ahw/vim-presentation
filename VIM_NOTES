@@ -9,31 +9,7 @@
 - help index to get list of all mappings
 - Fix indenting with =G
 
-= Basic Editing =
-    - Move with arrows
-    - Insert with "i"
-    - Back to Normal mode with ESC
-
-= Vim Modes =
-    - Normal (ESC) The default. Movement and text operations (copy/paste/deletion)
-    - Insert (i) Typing actual text
-    - Command Line (:) Enter vim commands. E.g., :help
-    - Visual (v) Highlight text
-    - Visual Line (V) Highlight lines
-    - Visual Block (C-V) Highlight character blocks
-
-= Movement and Operations =
-    - Motions move the cursor from one position to another in a file.
-      Operators modify the text that the cursor moves over.
-    - Basic movement: hjkl. Think of j as a downward arrow
-    - Operators
-        - d. Delete text
-        - y. Yank text (copy)
-        - c. Change text (delete and enter INSERT)
-    - The Vim language (simplified): {motion}{operation}
-    - Can repeat the last command (motion+operation) with "."
-
-= "Advanced" Movements =
+== "Advanced" Movements =
     - Left-right: 0, $, f, F, t, T
     - Up-down: }, {, H, L, gg, G
     - Word motions: w, W, b, B, e, E
@@ -130,6 +106,7 @@ plugins
     - ctrlp
     - SnipMate
     - NERDCommenter?
+    - :source % to install a vimball
 
 = Plugin Installation =
 * Raw 
@@ -147,3 +124,7 @@ preferences
     - colorscheme
     - cursorline
     - set ruler
+
+colors
+    :hi
+    :hi Visual ctermbg=Yellow
