@@ -1,0 +1,22 @@
+USEFUL - GIT
+------------
+
+Vim's vimdiff tool can be integrated with Git! Open up diffs side-by-side in
+a vertically-split Vim window. Enter :qall to close both sides and open the
+next set diff set.
+
+~/.gitconfig:
+
+    [diff]
+        tool = vimdiff
+    [difftool]
+        prompt = false
+    [alias]
+        d = difftool
+
+Example
+=======
+
+    git d HEAD
+    git d HEAD~2 HEAD~3
+    git d feature-branch mainline

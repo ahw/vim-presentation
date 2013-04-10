@@ -17,7 +17,10 @@ set textwidth=76   "Exactly what it sounds like
 set wildmenu       "For helpful tab completion on say, :vsp <PATH_PREFIX>
 set mouse=a        "Allows the use of the mouse in all modes. Not useful in Mac Terminal
 set cursorline     "Highlights/underlines the current line
+set ruler          "Shows the cursor position in bottom right
 "set cc=80         "Draw a bar at 80 characters
+set backspace=indent,eol,start "Fixes super weird backspace problem
+set nospell
 
 colorscheme elflord
 
@@ -31,6 +34,8 @@ autocmd BufReadPost *
     \   exe "normal! g`\"" |
     \ endif
 
+au BufWinLeave * mkview
+au BufWinEnter * silent loadview
 map <C-N>  <esc>:NERDTreeToggle<CR>
 nmap <space> zz
 nmap <C-H> <C-W>h
@@ -47,4 +52,6 @@ au BufNewFile,BufRead *.pde set filetype=cpp
 
 hi Visual ctermfg=Black
 hi Visual ctermbg=Yellow
-" hi Normal ctermfg=White
+"hi Normal ctermfg=White
+"hi clear CursorLine
+"hi CursorLine ctermbg=8

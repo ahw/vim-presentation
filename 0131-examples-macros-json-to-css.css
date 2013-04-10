@@ -1,3 +1,16 @@
+/*
+ * Need a data structure that looks like
+ * 
+ * {
+ *      red : {
+ *          hex : ...
+ *          lab : ...
+ *          rgb : ...
+ *      },
+ *      blue : { ... }
+ * }
+ */
+
 const BUCKETS = [
     {COL:"red",    HEX:"#EE2725", LAB:[52,72,52], RGB:[238,39,37]},
     {COL:"blue",   HEX:"#3A6CC9", LAB:[47,15,-53], RGB:[58,108,201]}, 

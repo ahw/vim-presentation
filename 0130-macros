@@ -3,7 +3,6 @@ MACROS
 
 Macros are just a series of keystrokes saved in a register.
 
-
     q{a-z} (start recording macro into register {a-z})
     q      (stop recording macro)
     @{a-z} (run macro in register {a-z})
@@ -18,3 +17,9 @@ Editing a Register
     :let @x='andrew'
     :let @x='C-R C-R {a-z}'
              -------------
+
+Random Cool Thing
+=================
+
+    C-A increments numbers
+    C-X decrements numbers
