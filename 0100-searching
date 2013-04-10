@@ -1,0 +1,9 @@
+SEARCHING
+---------
+
+    / (search forwards)
+    ? (search backwards)
+    n (move to next match, direction relative)
+    N (move to previous match, direction relative)
+    * (search forwards for word surrounding cursor)
+    # (search backwards for word surrounding cursor)

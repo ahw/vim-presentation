@@ -9,26 +9,6 @@
 - help index to get list of all mappings
 - Fix indenting with =G
 
-== "Advanced" Movements =
-    - Left-right: 0, $, f, F, t, T
-    - Up-down: }, {, H, L, gg, G
-    - Word motions: w, W, b, B, e, E
-
-= Combine Arbitrary Movements With Arbitrary Operations =
-    - dff
-    - dt)
-    - yw
-
-= Shortcut Operations =
-    - dd (delete line)
-    - yy (yank current line)
-
-= Cool Ways To Enter INSERT Mode =
-    - i, a, I, A, o, O
-
-= making vim the default editor =
-    - export EDITOR=vim
-
 = Yanking (Copying) Text =
     - Like deletions and changes, yanking is applied over some range of
       characters
@@ -51,6 +31,8 @@
     - Small delete register -
     - Last search pattern register /
     - [Others]
+
+= marks =
 
 = searching =
     - Forwards /{pattern}
@@ -83,13 +65,12 @@
     - C-W = to equalize buffer windows after resize
     - set mouse=a
     - Moving between C-W {movement}
+    - scrollbind
 
 = editing a register =
     - :let @x='<C-R><C-R>'
     - :let x=a;
 
-scrollbind
-markers
 formatting with gq[movement]
 = macros =
     - recording
@@ -98,6 +79,10 @@ formatting with gq[movement]
     - "Infinite loops"
     - Incrementing/Decrementing numbers with C-A, C-X
     - Mitigating against unwanted formatting with :set paste
+
+= making vim the default editor =
+    - export EDITOR=vim
+
 
 plugins
     - NERDTree

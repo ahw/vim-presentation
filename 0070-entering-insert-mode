@@ -1,0 +1,17 @@
+DROPPING IN
+-----------
+
+    i (INSERT from current position)
+    a (INSERT after current position)
+    I (INSERT before current non-whitespace)
+    A (INSERT after last character on line)
+    o (open new line below)
+    O (open new line above)
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Vestibulum eu lectus eget mi consequat vestibulum. Aliquam
+    velit ante, commodo at sollicitudin a, congue viverra erat.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Donec tincidunt ipsum vitae odio imperdiet fringilla.
+    Aliquam tortor arcu, sodales a tincidunt in, posuere at
+    tortor.

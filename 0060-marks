@@ -1,0 +1,15 @@
+MARKS
+-----
+
+A mark is a position in a file that is remembered. It is not visible in
+any way.
+
+
+    m{a-z}  Set a mark
+    '{a-z}  Goto a mark (linewise)
+    `{a-z}  Goto a mark (character-wise)
+
+Going to a mark is a valid {motion}.
+
+    d'a
+    V'a

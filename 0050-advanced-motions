@@ -1,13 +1,64 @@
 "ADVANCED" MOTIONS
 ------------------
 
+Left-Right
+==========
+
+    LEFT_ARROW
+    RIGHT_ARROW
+    h
+    l
+    0       (beginning of line)
+    $       (end of line)
+    f{char} (to {char})
+    F       (to {char} backwards)
+    t       (till {char} forwards)
+    T       (till {char} backwards)
+
+Examples
+========
+
+    if (something is true) {
+        // yeah
+    }
+
+Up-down
+=======
+
+    UP_ARROW
+    DOWN_ARROW
+    j
+    k
+    gg           (go to top)
+    G            (go to bottom)
+    :[line]      (go to [line])
+    H            (top of screen)
+    L            (bottom of screen)
+
+
 Word motions
 ============
 
-    w (word motions; splits by alphanumeric, newline, special)
+    w (forward to next word; splits by alphanumeric, newline, special)
 
         some thing 123 yeah hallagan@amazon.com yeah
 
-    W (WORD motions; splits by whitespace only)
+    W (forward to next WORD; splits by whitespace only)
 
         some thing 123 yeah hallagan@amazon.com yeah
+
+    b (backward to next word)
+    B (backward to next WORD)
+    e (forward to end of next word)
+    E (forward to end of next WORD)
+
+Text object motions
+===================
+
+    } (forward next paragraph (empty line))
+    { (backward next paragraph (empty line))
+
+Various
+=======
+
+    % (go to matching paren, bracket, or brace, either direction)

@@ -1,0 +1,30 @@
+FIND AND REPLACE
+----------------
+
+    :%s/old_term/new_term/gc
+     |  |        |        ||
+     |  |        |        ||
+     |  what     |        ||
+     |  you are  |        |+----+
+     |  looking  |        |     |
+     |  for     what      |     |
+     |         you are    | "confirm" means 
+     |        replacing   | ask before each replace
+     +--+      it with    |
+        |             "global"
+    "%s" means        means do
+    search the        this for
+    whole dang    all occurences
+     document
+
+
+Regular Expressions
+===================
+
+    Grouping: \( \)
+    .
+    *
+    \+
+    \0 Whole matched pattern
+    \1 Matched pattern in the first grouping
+    \n Matched pattern in the nth grouping

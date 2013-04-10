@@ -1,0 +1,28 @@
+WINDOW SPLITS
+-------------
+
+    :sp[lit]  (horizontal split) 
+    :vsp[lit] (vertical split)
+
+    :vsp FILENAME (open a another file)
+
+
+Moving Among Splits
+===================
+
+    C-W {hjkl}
+
+
+Resizing Windows
+================
+
+    :set mouse=a (Lets you drag the split bar with a mouse)
+    C-W =        (equalize dimensions)
+    C-W >        (move split bar right)
+    C-W <        (move split bar left)
+
+
+Scrolling
+=========
+
+    :set scrollbind

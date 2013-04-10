@@ -1,0 +1,24 @@
+REGISTERS
+---------
+
+Deleting and yanking save text chunks into registers.
+
+    :reg
+
+Common Registers
+================
+
+    "    Unnamed. All deletes/yanks go here, always.
+    0    Most recent yank
+    1    Most recent delete
+    /    Last search pattern
+    a-z  User registers
+
+
+Explicitly Naming Registers
+===========================
+:reg provides hint: use double-quote before any delete or yank or put to use
+that register.
+
+    A. This line will be yanked into register a with "ayy
+    B. This line will be yanked into register b with "bdd
