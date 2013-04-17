@@ -20,18 +20,22 @@ Operators
 
     d y c
 
+      ^
+      |
+      |
+     "yank" means "copy"
 
 Together, a Language
 ====================
 
-    {operation}{motion}
+    [operation]{motion}
     jj
     dl
 
-    [count]{operation}{motion}
+    [count][operation]{motion}
     3dj
 
-    [count]{operation}[count]{motion}
+    [count][operation][count]{motion}
     3d2j == 6dj == d6j
 
 

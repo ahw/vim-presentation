@@ -117,3 +117,8 @@ colors
 editing as hex
     :%!xxd
     :%!xxd -r " to revert
+
+random useful
+    - q: To get buffer of previous commands
+    - Q to go into EXECUTE mode
+    - comments that start with '#' (type a # below this line to see)

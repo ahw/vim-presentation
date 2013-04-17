@@ -1,0 +1,112 @@
+if (typeof benchmarkData != "undefined")
+
+    - var placementQuery = sprintf('Placement:"%s"', searchResult.Placement);
+    - var placementAndVerticalQuery = sprintf('Vertical:"%s" AND Placement:"%s"', searchResult.Vertical, searchResult.Placement);
+    div#adi-benchmarks-section
+        h4 CTR
+        .row-fluid
+            .span1 X
+            .span3
+                strong This Creative
+            .span7
+                .progress
+                    .bar(style="width:" + convertRatioToCssWidth(benchmarkData.ctr, 0.05))
+            .span1
+                span= formatAsPercentage(benchmarkData.ctr)
+
+
+        .row-fluid
+            .span1
+                - var ratio = benchmarkData.ctr / benchmarkData.placement_ctr_median;
+                #adi-ctr-placement-gauge.adi-benchmark-gauge(data-ratio=ratio)= ratio
+            .span3
+                a.adi-raw-query(data-query=placementQuery) Same Placement
+            .span7
+                .progress
+                    .bar(style="width:" + convertRatioToCssWidth(benchmarkData.placement_ctr_median, 0.05))
+            .span1
+                span= formatAsPercentage(benchmarkData.placement_ctr_median)
+
+        .row-fluid
+            .span1
+                - var ratio = benchmarkData.ctr / benchmarkData.placement_vertical_ctr_median;
+                #adi-ctr-placement-vertical-gauge.adi-benchmark-gauge(data-ratio=ratio)= ratio
+            .span3
+                a.adi-raw-query(data-query=placementAndVerticalQuery) Same Placement/Category
+            .span7
+                .progress
+                    .bar(style="width:" + convertRatioToCssWidth(benchmarkData.placement_vertical_ctr_median, 0.05))
+            .span1
+                span= formatAsPercentage(benchmarkData.placement_vertical_ctr_median)
+
+        h4 CSR
+        .row-fluid
+            .span1 X
+            .span3
+                strong This Creative
+            .span7
+                .progress
+                    .bar(style="width:" + convertRatioToCssWidth(benchmarkData.consideration_rate, 0.05))
+            .span1
+                span= formatAsPercentage(benchmarkData.consideration_rate)
+
+
+        .row-fluid
+            .span1
+                - var ratio = benchmarkData.XXX / benchmarkData.placement_consideration_rate_median;
+                #adi-csr-placement-gauge.adi-benchmark-gauge(data-ratio=ratio)
+            .span3
+                a.adi-raw-query(data-query=placementQuery) Same Placement
+            .span7
+                .progress
+                    .bar(style="width:" + convertRatioToCssWidth(benchmarkData.placement_consideration_rate_median, 0.05))
+            .span1
+                span= formatAsPercentage(benchmarkData.placement_consideration_rate_median)
+
+        .row-fluid
+            .span1
+                - var ratio = benchmarkData.XXX / benchmarkData.placement_vertical_consideration_rate_median;
+                #adi-csr-placement-vertical-gauge.adi-benchmark-gauge(data-ratio=ratio)
+            .span3
+                a.adi-raw-query(data-query=placementAndVerticalQuery) Same Placement/Category
+            .span7
+                .progress
+                    .bar(style="width:" + convertRatioToCssWidth(benchmarkData.placement_vertical_consideration_rate_median, 0.05))
+            .span1
+                span= formatAsPercentage(benchmarkData.placement_vertical_consideration_rate_median)
+
+        h4 Conversion Rate
+        .row-fluid
+            .span1 X
+            .span3
+                strong This Creative
+            .span7
+                .progress
+                    .bar(style="width:" + convertRatioToCssWidth(benchmarkData.conversion_rate, 0.05))
+            .span1
+                span= formatAsPercentage(benchmarkData.conversion_rate)
+
+
+        .row-fluid
+            .span1
+                - var ratio = benchmarkData.XXX / benchmarkData.placement_conversion_rate_median;
+                #adi-conversion-rate-placement-gauge.adi-benchmark-gauge(data-ratio=ratio)
+            .span3
+                a.adi-raw-query(data-query=placementQuery) Same Placement
+            .span7
+                .progress
+                    .bar(style="width:" + convertRatioToCssWidth(benchmarkData.placement_conversion_rate_median, 0.05))
+            .span1
+                span= formatAsPercentage(benchmarkData.placement_conversion_rate_median)
+
+        .row-fluid
+            .span1
+                - var ratio = benchmarkData.XXX / benchmarkData.placement_vertical_conversion_rate_median;
+                #adi-conversion-rate-placement-vertical-gauge.adi-benchmark-gauge(data-ratio=ratio)
+            .span3
+                a.adi-raw-query(data-query=placementAndVerticalQuery) Same Placement/Category
+            .span7
+                .progress
+                    .bar(style="width:" + convertRatioToCssWidth(benchmarkData.placement_vertical_conversion_rate_median, 0.05))
+            .span1
+                span= formatAsPercentage(benchmarkData.placement_vertical_conversion_rate_median)
