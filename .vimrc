@@ -52,6 +52,6 @@ au BufNewFile,BufRead *.pde set filetype=cpp
 
 hi Visual ctermfg=Black
 hi Visual ctermbg=Yellow
+hi clear CursorLine
+hi CursorLine ctermbg=8
 "hi Normal ctermfg=White
-"hi clear CursorLine
-"hi CursorLine ctermbg=8

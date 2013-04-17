@@ -122,3 +122,10 @@ random useful
     - q: To get buffer of previous commands
     - Q to go into EXECUTE mode
     - comments that start with '#' (type a # below this line to see)
+
+vim in the wild
+    - gmail
+    - wired.com
+    - sublime
+    - vimperator
+    - pteradactyl
