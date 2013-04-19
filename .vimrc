@@ -54,4 +54,6 @@ hi Visual ctermfg=Black
 hi Visual ctermbg=Yellow
 hi clear CursorLine
 hi CursorLine ctermbg=8
+hi Pmenu cterm=bold,reverse ctermfg=0 ctermbg=15
+hi PmenuSel term=reverse ctermfg=15 ctermbg=9
 "hi Normal ctermfg=White
