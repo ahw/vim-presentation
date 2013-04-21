@@ -46,3 +46,15 @@ Common Single Line Operations
     yy (Yank the current line)
     D  (Delete to end)
     C  (Change to end; delete+INSERT)
+
+        return x + 2 * foo;
+
+Your Problem with Vim is that You Don't Grok Vi
+===============================================
+http://stackoverflow.com/questions/1218390/what-is-your-most-productive-shortcut-with-vim/1220118#1220118
+
+    The "Zen" of vi is that you're speaking a language.
+
+    Subject - motions
+    Verbs - delete, yank, change
+    Objects - registers (where you delete or yank stuff)

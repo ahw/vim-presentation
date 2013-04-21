@@ -3,7 +3,14 @@ DROPPING IN
 
     i (INSERT from current position)
     a (INSERT after current position)
-    I (INSERT before current non-whitespace)
+    I (INSERT before earliest non-whitespace character in line)
+
+        if (foo) {
+            // yeah
+        } else if (bar) {
+            yeah yeah yeah
+        }
+
     A (INSERT after last character on line)
     o (open new line below)
     O (open new line above)

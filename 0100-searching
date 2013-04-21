@@ -7,3 +7,15 @@ SEARCHING
     N (move to previous match, direction relative)
     * (search forwards for word surrounding cursor)
     # (search backwards for word surrounding cursor)
+
+    function() {
+
+        someCallbackFunction(args);
+
+    }
+
+    // ...
+
+    function someCallbackFunction(args) {
+        // ...
+    }

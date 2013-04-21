@@ -15,6 +15,9 @@ Common Registers
     a-z  User registers
 
 
+    here is line 1 deleted into register 1
+    here is line 2 deleted into register 1, previous line will be in register 2
+
 Explicitly Naming Registers
 ===========================
 :reg provides hint: use double-quote before any delete or yank or put to use
