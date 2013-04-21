@@ -1,0 +1,15 @@
+FORMATTING
+----------
+
+    gq{motion} (formats text according to filetype, textwidth)
+
+
+    Simple example. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Vestibulum eu lectus eget mi consequat vestibulum. Aliquam velit ante,
+    I've started adding text here.
+    and here
+    and here
+    commodo at sollicitudin a, congue viverra erat.  Lorem ipsum dolor sit
+    amet, consectetur adipiscing elit.  Donec tincidunt ipsum vitae odio
+    imperdiet fringilla.  Aliquam tortor arcu, sodales a tincidunt in, Oh and I added something to the end of this line.
+    posuere at tortor.

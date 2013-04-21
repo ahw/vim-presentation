@@ -7,6 +7,7 @@ Deleting automatically yanks!
 PUT, a.k.a. PASTE
 -----------------
 
+By default the last yanked or deleted thing is available to put.
 
     p (put text after cursor)
     P (put text after cursor)
