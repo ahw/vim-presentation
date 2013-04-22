@@ -1,2 +1,4 @@
 WEIRD - BACKSPACE
 -----------------
+
+    set backspace=indent,eol,start "Fixes super weird backspace problem

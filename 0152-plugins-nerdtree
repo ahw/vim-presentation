@@ -1,0 +1,6 @@
+NERD TREE
+---------
+
+    :map <C-N> <esc>:NERDTreeToggle<CR>
+
+    ? for help

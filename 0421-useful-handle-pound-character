@@ -1,0 +1,8 @@
+USEFUL - HANDLE POUND COMMENTS
+------------------------------
+
+if () {
+    then do this;
+} else {
+}
+

@@ -5,7 +5,7 @@ Unpack plugin files into .vim/.
 
     unzip plugin.zip ~/.vim/
 
-    vim plugin.vba
+    vim plugin.vba (sometimes .vmb)
     :source % 
 
 .vimrc needs:

@@ -1,0 +1,7 @@
+PASTE STUFF FROM THE OUTSIDE WORLD
+----------------------------------
+
+Sometimes when you paste stuff from your clipboard weird stuff happens (i.e.,
+might treat certain characters as Vim command input).
+
+    :set paste

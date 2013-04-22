@@ -2,6 +2,17 @@ PLUGINS
 -------
 
     NERD Tree (interactive directory listing)
+
     Supertab  (auto-completion)
+
+        function() {
+            someReallyLongVariable =1;
+            someOtherVariable = 2;
+            somethingElse = 3;
+        }
+
     SnipMate  (TextMate-style snippets)
+
+        (See example)
+
     Ctrl-P    (File access like Sublime's Ctrl-P)

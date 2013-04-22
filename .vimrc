@@ -34,8 +34,10 @@ autocmd BufReadPost *
     \   exe "normal! g`\"" |
     \ endif
 
+"Some sort of hack to get the above to work
 au BufWinLeave * mkview
 au BufWinEnter * silent loadview
+
 map <C-N>  <esc>:NERDTreeToggle<CR>
 nmap <space> zz
 nmap <C-H> <C-W>h
@@ -46,10 +48,12 @@ nmap <C-P> <C-W>k
 imap <leader>wq <esc>:wq<CR>
 map <F2> <esc>:qall<CR>
 map <leader>w <esc>:set nowrap<CR>
+:inoremap # X#  "Note that ^H is entered with Ctrl-V Ctrl-H
 
-"Open .pde files as C-types files
+"Open .pde files as C-type files
 au BufNewFile,BufRead *.pde set filetype=cpp
 
+"Some custom colors
 hi Visual ctermfg=Black
 hi Visual ctermbg=Yellow
 hi clear CursorLine

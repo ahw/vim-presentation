@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>~/vim-presentation/VIM_NOTES.html</title>
+<meta name="Generator" content="Vim/7.3">
+<meta name="plugin-version" content="vim7.3_v6">
+<meta name="syntax" content="none">
+<meta name="settings" content="use_css,number_lines">
+<style type="text/css">
+<!--
+pre { font-family: monospace; color: #8080ff; background-color: #808080; }
+body { font-family: monospace; color: #8080ff; background-color: #808080; }
+.lnr { color: #00ff00; background-color: #000000; }
+-->
+</style>
+</head>
+<body>
+<pre>
+<span class="lnr">  1 </span>- &lt;C-M&gt; maps to &lt;CR&gt; in NORMAL mode
+<span class="lnr">  2 </span>- Fixing the annoying spacing that happens in Python comments.
+<span class="lnr">  3 </span>    - filetype plugin indent on
+<span class="lnr">  4 </span>    - au! FileType python setl nosmartindent
+<span class="lnr">  5 </span>- Recording/running macros that case lines to be hard-wrapped
+<span class="lnr">  6 </span>- Formatting text with gqj
+<span class="lnr">  7 </span>- set ruler to show row/column numbers
+<span class="lnr">  8 </span>- Going back to previous edit positions with g; and g,
+<span class="lnr">  9 </span>- help index to get list of all mappings
+<span class="lnr"> 10 </span>- Fix indenting with =G
+<span class="lnr"> 11 </span>
+<span class="lnr"> 12 </span>== &quot;Advanced&quot; Movements =
+<span class="lnr"> 13 </span>    - Left-right: 0, $, f, F, t, T
+<span class="lnr"> 14 </span>    - Up-down: }, {, H, L, gg, G
+<span class="lnr"> 15 </span>    - Word motions: w, W, b, B, e, E
+<span class="lnr"> 16 </span>
+<span class="lnr"> 17 </span>= Combine Arbitrary Movements With Arbitrary Operations =
+<span class="lnr"> 18 </span>    - dff
+<span class="lnr"> 19 </span>    - dt)
+<span class="lnr"> 20 </span>    - yw
+<span class="lnr"> 21 </span>
+<span class="lnr"> 22 </span>= Shortcut Operations =
+<span class="lnr"> 23 </span>    - dd (delete line)
+<span class="lnr"> 24 </span>    - yy (yank current line)
+<span class="lnr"> 25 </span>
+<span class="lnr"> 26 </span>= Cool Ways To Enter INSERT Mode =
+<span class="lnr"> 27 </span>    - i, a, I, A, o, O
+<span class="lnr"> 28 </span>
+<span class="lnr"> 29 </span>= making vim the default editor =
+<span class="lnr"> 30 </span>    - export EDITOR=vim
+<span class="lnr"> 31 </span>
+<span class="lnr"> 32 </span>= Yanking (Copying) Text =
+<span class="lnr"> 33 </span>    - Like deletions and changes, yanking is applied over some range of
+<span class="lnr"> 34 </span>      characters
+<span class="lnr"> 35 </span>    - Text is pasted with p (after cursor) or P (before cursor)
+<span class="lnr"> 36 </span>    - Text is yanked into registers. By default the last yanked thing is
+<span class="lnr"> 37 </span>      available when executing a &quot;p&quot; or &quot;P&quot; command
+<span class="lnr"> 38 </span>    - What registers are available? :reg
+<span class="lnr"> 39 </span>    - Deleting automatically yanks too!
+<span class="lnr"> 40 </span>
+<span class="lnr"> 41 </span>= Using Explicitly Named Registers =
+<span class="lnr"> 42 </span>    - &quot;[x]{d|c|y}{motion}
+<span class="lnr"> 43 </span>    - &quot;[x]{p|P}
+<span class="lnr"> 44 </span>
+<span class="lnr"> 45 </span>= Registers =
+<span class="lnr"> 46 </span>    - The unnamed register &quot;. All deletes and yanks go here by default. All
+<span class="lnr"> 47 </span>      puts use this register if no other is specified
+<span class="lnr"> 48 </span>    - Numbered registers 0-9.
+<span class="lnr"> 49 </span>        - 0 contains most recent yank
+<span class="lnr"> 50 </span>        - 1 contains most recent delete
+<span class="lnr"> 51 </span>    - Small delete register -
+<span class="lnr"> 52 </span>    - Last search pattern register /
+<span class="lnr"> 53 </span>    - [Others]
+<span class="lnr"> 54 </span>
+<span class="lnr"> 55 </span>= searching =
+<span class="lnr"> 56 </span>    - Forwards /{pattern}
+<span class="lnr"> 57 </span>    - Backwards ?{pattern}
+<span class="lnr"> 58 </span>    - Forwards using current word *
+<span class="lnr"> 59 </span>    - Backwards using current word #
+<span class="lnr"> 60 </span>    - Next match: n (relative to direction)
+<span class="lnr"> 61 </span>    - Previous match: N (relative to direction)
+<span class="lnr"> 62 </span>    - Works with operations! E.g., dn
+<span class="lnr"> 63 </span>
+<span class="lnr"> 64 </span>= find-and-replace =
+<span class="lnr"> 65 </span>    - The &quot;normal&quot; way :%s/old/new/gc
+<span class="lnr"> 66 </span>    - Regular expressions: TODO
+<span class="lnr"> 67 </span>        - Things that need escaping: \( \), \{n}, \+, \=
+<span class="lnr"> 68 </span>        - &amp;  : The whole matched pattern
+<span class="lnr"> 69 </span>        - \0 : The whole matched pattern
+<span class="lnr"> 70 </span>        - \1 : The matched pattern in the first grouping
+<span class="lnr"> 71 </span>        - \n : The matched pattern in the nth grouping
+<span class="lnr"> 72 </span>        - ~  : The previous substitute string
+<span class="lnr"> 73 </span>        - \L : The following characters are lowercased
+<span class="lnr"> 74 </span>        - \U : The following characters are uppercased
+<span class="lnr"> 75 </span>        - \l : The following character is lowercased
+<span class="lnr"> 76 </span>        - \u : The following character is uppercased
+<span class="lnr"> 77 </span>        - \E or \e : End of \U or \L
+<span class="lnr"> 78 </span>        - \r : Newline
+<span class="lnr"> 79 </span>
+<span class="lnr"> 80 </span>= views: splits =
+<span class="lnr"> 81 </span>    - git d
+<span class="lnr"> 82 </span>    - :qall mapped to F2
+<span class="lnr"> 83 </span>    - C-W = to equalize buffer windows after resize
+<span class="lnr"> 84 </span>    - set mouse=a
+<span class="lnr"> 85 </span>    - Moving between C-W {movement}
+<span class="lnr"> 86 </span>
+<span class="lnr"> 87 </span>= editing a register =
+<span class="lnr"> 88 </span>    - :let @x='&lt;C-R&gt;&lt;C-R&gt;'
+<span class="lnr"> 89 </span>    - :let x=a;
+<span class="lnr"> 90 </span>
+<span class="lnr"> 91 </span>scrollbind
+<span class="lnr"> 92 </span>markers
+<span class="lnr"> 93 </span>formatting with gq[movement]
+<span class="lnr"> 94 </span>= macros =
+<span class="lnr"> 95 </span>    - recording
+<span class="lnr"> 96 </span>    - replaying
+<span class="lnr"> 97 </span>    - editing with &quot;let&quot;
+<span class="lnr"> 98 </span>    - &quot;Infinite loops&quot;
+<span class="lnr"> 99 </span>    - Incrementing/Decrementing numbers with C-A, C-X
+<span class="lnr">100 </span>    - Mitigating against unwanted formatting with :set paste
+<span class="lnr">101 </span>
+<span class="lnr">102 </span>plugins
+<span class="lnr">103 </span>    - NERDTree
+<span class="lnr">104 </span>        - Refresh file list with r
+<span class="lnr">105 </span>    - Supertab
+<span class="lnr">106 </span>    - ctrlp
+<span class="lnr">107 </span>    - SnipMate
+<span class="lnr">108 </span>    - NERDCommenter?
+<span class="lnr">109 </span>    - :source % to install a vimball
+<span class="lnr">110 </span>
+<span class="lnr">111 </span>= Plugin Installation =
+<span class="lnr">112 </span>* Raw
+<span class="lnr">113 </span>vimdiff
+<span class="lnr">114 </span>folds
+<span class="lnr">115 </span>tabs
+<span class="lnr">116 </span>    - converting to spaces, back to tabs
+<span class="lnr">117 </span>    - retab
+<span class="lnr">118 </span>linefeeds: CRLF &lt;--&gt; NL
+<span class="lnr">119 </span>
+<span class="lnr">120 </span>preferences
+<span class="lnr">121 </span>    - set cc=80
+<span class="lnr">122 </span>    - set nowrap/wrap
+<span class="lnr">123 </span>    - number!
+<span class="lnr">124 </span>    - colorscheme
+<span class="lnr">125 </span>    - cursorline
+<span class="lnr">126 </span>    - set ruler
+<span class="lnr">127 </span>
+<span class="lnr">128 </span>colors
+<span class="lnr">129 </span>    :hi
+<span class="lnr">130 </span>    :hi Visual ctermbg=Yellow
+</pre>
+</body>
+</html>

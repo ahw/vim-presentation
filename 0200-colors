@@ -1,0 +1,18 @@
+COLORS
+------
+
+    :colorscheme (echos the current colorscheme)
+    :colorscheme elflord (sets colorscheme to elflord)
+
+Some common color schemes
+=========================
+
+    elflord
+    pablo
+    desert
+    solorized (Google "Vim solarized colorscheme")
+
+See how everything is currently highlighted
+===========================================
+
+    :hi[light]
