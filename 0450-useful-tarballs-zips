@@ -1,0 +1,6 @@
+OPEN TARBALLS, JARS,  AND ZIP FILES
+-----------------------------------
+
+    vim log4j.jar
+    vim nerdtree.zip
+    vim foo.tar.gz
