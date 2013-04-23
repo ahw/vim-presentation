@@ -1,0 +1,7 @@
+COMMAND HISTORY
+---------------
+
+    q:  (Get command history in another buffer)
+
+Move around and edit like any other buffer. Run a command by pressing ENTER
+on a line.

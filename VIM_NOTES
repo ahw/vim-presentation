@@ -5,59 +5,8 @@
 - Recording/running macros that case lines to be hard-wrapped
 - Formatting text with gqj
 - set ruler to show row/column numbers
-- Going back to previous edit positions with g; and g,
 - help index to get list of all mappings
 - Fix indenting with =G
-
-= Yanking (Copying) Text =
-    - Like deletions and changes, yanking is applied over some range of
-      characters
-    - Text is pasted with p (after cursor) or P (before cursor)
-    - Text is yanked into registers. By default the last yanked thing is
-      available when executing a "p" or "P" command
-    - What registers are available? :reg
-    - Deleting automatically yanks too!
-
-= Using Explicitly Named Registers =
-    - "[x]{d|c|y}{motion}
-    - "[x]{p|P}
-
-= Registers =
-    - The unnamed register ". All deletes and yanks go here by default. All
-      puts use this register if no other is specified
-    - Numbered registers 0-9.
-        - 0 contains most recent yank
-        - 1 contains most recent delete
-    - Small delete register -
-    - Last search pattern register /
-    - [Others]
-
-= marks =
-
-= searching =
-    - Forwards /{pattern}
-    - Backwards ?{pattern}
-    - Forwards using current word *
-    - Backwards using current word #
-    - Next match: n (relative to direction)
-    - Previous match: N (relative to direction)
-    - Works with operations! E.g., dn
-
-= find-and-replace =
-    - The "normal" way :%s/old/new/gc
-    - Regular expressions: TODO
-        - Things that need escaping: \( \), \{n}, \+, \=
-        - &  : The whole matched pattern
-        - \0 : The whole matched pattern
-        - \1 : The matched pattern in the first grouping
-        - \n : The matched pattern in the nth grouping
-        - ~  : The previous substitute string
-        - \L : The following characters are lowercased
-        - \U : The following characters are uppercased
-        - \l : The following character is lowercased
-        - \u : The following character is uppercased
-        - \E or \e : End of \U or \L
-        - \r : Newline
 
 = git =
     - git d
@@ -67,27 +16,10 @@
 = views: splits =
     - git d
     - :qall mapped to F2
-    - C-W = to equalize buffer windows after resize
-    - set mouse=a
-    - Moving between C-W {movement}
     - scrollbind
-
-= editing a register =
-    - :let @x='<C-R><C-R>'
-    - :let x=a;
-
-formatting with gq[movement]
-= macros =
-    - recording
-    - replaying
-    - editing with "let"
-    - "Infinite loops"
-    - Incrementing/Decrementing numbers with C-A, C-X
-    - Mitigating against unwanted formatting with :set paste
 
 = making vim the default editor =
     - export EDITOR=vim
-
 
 plugins
     - NERDTree
@@ -101,23 +33,6 @@ plugins
 = Plugin Installation =
 * Raw 
 vimdiff
-folds
-tabs
-    - converting to spaces, back to tabs
-    - retab
-linefeeds: CRLF <--> NL
-
-preferences
-    - set cc=80
-    - set nowrap/wrap
-    - number!
-    - colorscheme
-    - cursorline
-    - set ruler
-
-colors
-    :hi
-    :hi Visual ctermbg=Yellow
 
 editing as hex
     :%!xxd

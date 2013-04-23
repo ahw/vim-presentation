@@ -27,6 +27,7 @@ colorscheme elflord
 filetype on "Enable filetype detection
 filetype plugin on "Enables filetype-specific plugins
 filetype plugin indent on "Tries to fix indenting of # comments
+au! FileType python setl nosmartindent
 
 "Remembers where the cursor left off for each file
 autocmd BufReadPost *

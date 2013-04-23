@@ -10,6 +10,11 @@ Macros are just a series of keystrokes saved in a register.
 
 Macros can be recursive!
 
+If autoformatting causes a line to wrap while recording a macro, disable by
+using
+
+    :set paste
+
 
 Editing a Register
 ==================

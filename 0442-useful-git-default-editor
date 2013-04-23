@@ -1,0 +1,9 @@
+MAKE VIM DEFAULT EDITOR
+-----------------------
+
+In ~/.zshrc
+
+    export EDITOR=vim
+
+
+Git commit messages are automatically highlighted correctly for you.
