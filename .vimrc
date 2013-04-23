@@ -45,10 +45,14 @@ nmap <C-L> <C-W>l
 nmap <C-J> <C-W>j
 nmap <C-K> <C-W>k
 nmap <C-P> <C-W>k
+"Note that <CR> is used for ENTER
 imap <leader>wq <esc>:wq<CR>
+"Helpful esp. in Git Diff
 map <F2> <esc>:qall<CR>
 map <leader>w <esc>:set nowrap<CR>
-":inoremap # X#  "Note that ^H is entered with Ctrl-V Ctrl-H
+"The ! means toggle
+map <leader>cl <esc>:set cursorline!<CR>
+":inoremap # X#  "Note that ^H is entered with Ctrl-V Ctrl-H
 
 "Open .pde files as C-type files
 au BufNewFile,BufRead *.pde set filetype=cpp
@@ -57,7 +61,8 @@ au BufNewFile,BufRead *.pde set filetype=cpp
 hi Visual ctermfg=Black
 hi Visual ctermbg=Yellow
 hi clear CursorLine
-hi CursorLine ctermbg=8
+hi CursorLine ctermfg=15 ctermbg=9
 hi Pmenu cterm=bold,reverse ctermfg=0 ctermbg=15
 hi PmenuSel term=reverse ctermfg=15 ctermbg=9
+hi LineNr ctermfg=8
 "hi Normal ctermfg=White

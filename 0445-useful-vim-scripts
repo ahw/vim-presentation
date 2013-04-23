@@ -1,0 +1,5 @@
+VIM SCRIPTS
+-----------
+
+    Put vim scripts in your ~/.vim/plugin directory. They'll automatically
+    get picked up and processed by Vim.

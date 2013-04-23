@@ -3,4 +3,3 @@ JUMP TO PREVIOUS POSITION (WITHOUT MARKS)
 
     g;  Go to [count] older position in the change list
     g,  Go to [count] new position in the change list
-
