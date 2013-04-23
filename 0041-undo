@@ -2,7 +2,7 @@ UNDO LAST OPERATION
 -------------------
 
     u  (undo)
-    r  (redo)
+    C-R  (redo)
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     Vestibulum eu lectus eget mi consequat vestibulum. Aliquam

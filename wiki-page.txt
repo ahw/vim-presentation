@@ -1,0 +1,1602 @@
+
+ENTERING AND EXITING
+--------------------
+
+    vim FILENAME
+    "i" to enter INSERT mode and start typing
+    <ESC> to enter NORMAL mode
+    :w to save
+    :q to quit
+    :q! to force quit
+    :wq to write and quit
+
+
+    +--------+      i       +--------+
+    |        |------------->|        |
+    | NORMAL |              | INSERT |
+    |        |<-------------|        |
+    +--------+    <ESC>     +--------+
+       |  ^
+     : |  | <ESC>
+       |  |
+       V  |
+    +---------+
+    |         |
+    | CMDLINE |
+    |         |
+    +---------+
+
+WHY
+---
+
+- Old as the hills, available everywhere.
+
+- Text-based UI. No graphical environment required. Super useful when SSHing
+  remotely.
+
+- It is the well-established Swiss Army knife of UNIX-based systems.
+
+- It is a chick magnet.
+
+- It is a man tractor beam.
+
+- Your dad knew Vim.
+
+VIM MODES
+---------
+
+    Normal          ESC
+    Insert          i
+    Command Line    :
+    Visual          v
+    Visual Line     V
+    Visual Block    C-V
+
+    Replace         R
+    Execute         Q
+
+                    +--------+
+                    |        |
+                    | VISUAL |
+                    |        |
+                    +--------+
+                        ^
+                        |
+                        | v,V
+                        |
+ +---------+        +--------+         +--------+
+ |         |    R   |        |    i    |        |
+ | REPLACE |<-------| NORMAL |-------->| INSERT |
+ |         |        |        |         |        |
+ +---------+        +--------+         +--------+
+                        |
+                        |
+                        | :
+                        |
+                        V
+                    +---------+
+                    |         |
+                    | CMDLINE |
+                    |         |
+                    +---------+
+
+MOTIONS and OPERATORS
+---------------------
+
+Motions move the cursor from one place to another. Operations modify the
+text covered by some motion. These all happen in NORMAL mode.
+
+Basic movements
+===============
+
+    h j k l
+
+      ^
+      |
+      |
+     down (like fishing hook)
+
+
+Operators
+=========
+
+    d y c
+
+      ^
+      |
+      |
+     "yank" means "copy"
+
+Together, a Language
+====================
+
+    [operation]{motion}
+    jj
+    dl
+
+    [count][operation]{motion}
+    3dj
+
+    [count][operation][count]{motion}
+    3d2j == 6dj == d6j
+
+
+Common Single Line Operations
+=============================
+
+    dd (Delete the current line)
+    yy (Yank the current line)
+    D  (Delete to end)
+    C  (Change to end; delete+INSERT)
+
+        return x + 2 * foo;
+
+Your Problem with Vim is that You Don't Grok Vi
+===============================================
+http://stackoverflow.com/questions/1218390/what-is-your-most-productive-shortcut-with-vim/1220118#1220118
+
+    The "Zen" of vi is that you're speaking a language.
+
+    Subject - motions
+    Verbs - delete, yank, change
+    Objects - registers (where you delete or yank stuff)
+
+MOTIONS and OPERATIONS in VISUAL MODE
+-------------------------------------
+
+    Enter v to enter VISUAL mode or V to enter VISUAL LINE mode. Delete,
+    yank, and change work as you'd expect.
+
+    v{motion}{operation}
+    vjjjjjd
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Vestibulum eu lectus eget mi consequat vestibulum. Aliquam
+    velit ante, commodo at sollicitudin a, congue viverra erat.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Donec tincidunt ipsum vitae odio imperdiet fringilla.
+    Aliquam tortor arcu, sodales a tincidunt in, posuere at
+    tortor.
+
+REPEAT LAST OPERATION
+---------------------
+
+    .
+
+    dd.....
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Vestibulum eu lectus eget mi consequat vestibulum. Aliquam
+    velit ante, commodo at sollicitudin a, congue viverra erat.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Donec tincidunt ipsum vitae odio imperdiet fringilla.
+    Aliquam tortor arcu, sodales a tincidunt in, posuere at
+    tortor.
+
+UNDO LAST OPERATION
+-------------------
+
+    u  (undo)
+    r  (redo)
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Vestibulum eu lectus eget mi consequat vestibulum. Aliquam
+    velit ante, commodo at sollicitudin a, congue viverra erat.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Donec tincidunt ipsum vitae odio imperdiet fringilla.
+    Aliquam tortor arcu, sodales a tincidunt in, posuere at
+    tortor.
+
+"ADVANCED" MOTIONS
+------------------
+
+Left-Right
+==========
+
+    LEFT_ARROW
+    RIGHT_ARROW
+    h
+    l
+    0       (beginning of line)
+    $       (end of line)
+    f{char} (to {char})
+    F       (to {char} backwards)
+    t       (till {char} forwards)
+    T       (till {char} backwards)
+
+Examples
+========
+
+    if (something is true) {
+        // yeah
+    }
+
+Up-down
+=======
+
+    UP_ARROW
+    DOWN_ARROW
+    j
+    k
+    gg           (go to top)
+    G            (go to bottom)
+    :[line]      (go to [line])
+    H            (top of screen)
+    L            (bottom of screen)
+
+
+Word motions
+============
+
+    w (forward to next word; splits by alphanumeric, newline, special)
+
+        some thing 123 yeah hallagan@amazon.com yeah
+
+    W (forward to next WORD; splits by whitespace only)
+
+        some thing 123 yeah hallagan@amazon.com yeah
+
+    b (backward to next word)
+    B (backward to next WORD)
+    e (forward to end of next word)
+    E (forward to end of next WORD)
+
+Text object motions
+===================
+
+    } (forward next paragraph (empty line))
+    { (backward next paragraph (empty line))
+
+Various
+=======
+
+    % (go to matching paren, bracket, or brace, either direction)
+
+    function() {
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        // stuff inside
+        return true;
+    }
+
+MARKS
+-----
+
+A mark is a position in a file that is remembered. It is not visible in
+any way.
+
+
+    m{a-z}  Set a mark
+    '{a-z}  Goto a mark (linewise)
+    `{a-z}  Goto a mark (character-wise)
+
+Going to a mark is a valid {motion}.
+
+    d'a
+    V'a
+    
+    Seting an "a" mark here.
+    Here is some more text
+    Here is some more text
+    Here is some more text
+    Here is some more text
+    Setting a "b" mark here.
+
+DROPPING IN
+-----------
+
+    i (INSERT from current position)
+    a (INSERT after current position)
+    I (INSERT before earliest non-whitespace character in line)
+
+        if (foo) {
+            // yeah
+        } else if (bar) {
+            yeah yeah yeah
+        }
+
+    A (INSERT after last character on line)
+    o (open new line below)
+    O (open new line above)
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Vestibulum eu lectus eget mi consequat vestibulum. Aliquam
+    velit ante, commodo at sollicitudin a, congue viverra erat.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Donec tincidunt ipsum vitae odio imperdiet fringilla.
+    Aliquam tortor arcu, sodales a tincidunt in, posuere at
+    tortor.
+
+YANKING
+-------
+
+Yanking text is done with the y operator. Visual yanking.
+Deleting automatically yanks!
+
+PUT, a.k.a. PASTE
+-----------------
+
+By default the last yanked or deleted thing is available to put.
+
+    p (put text after cursor)
+    P (put text after cursor)
+
+REGISTERS
+---------
+
+Deleting and yanking save text chunks into registers.
+
+    :reg
+
+Common Registers
+================
+
+    "    Unnamed. All deletes/yanks go here, always.
+    0    Most recent yank
+    1    Most recent delete
+    /    Last search pattern
+    a-z  User registers
+
+
+    here is line 1 deleted into register 1
+    here is line 2 deleted into register 1, previous line will be in register 2
+
+Explicitly Naming Registers
+===========================
+:reg provides hint: use double-quote before any delete or yank or put to use
+that register.
+
+    A. This line will be yanked into register a with "ayy
+    B. This line will be yanked into register b with "bdd
+
+SEARCHING
+---------
+
+    / (search forwards)
+    ? (search backwards)
+    n (move to next match, direction relative)
+    N (move to previous match, direction relative)
+    * (search forwards for word surrounding cursor)
+    # (search backwards for word surrounding cursor)
+
+    function() {
+
+        someCallbackFunction(args);
+
+    }
+
+    // ...
+
+    function someCallbackFunction(args) {
+        // ...
+    }
+
+FIND AND REPLACE
+----------------
+
+    :%s/old_term/new_term/gc
+     |  |        |        ||
+     |  |        |        ||
+     |  what     |        ||
+     |  you are  |        |+----+
+     |  looking  |        |     |
+     |  for     what      |     |
+     |         you are    | "confirm" means 
+     |        replacing   | ask before each replace
+     +--+      it with    |
+        |             "global"
+    "%s" means        means do
+    search the        this for
+    whole dang    all occurences
+     document
+
+
+Regular Expressions
+===================
+
+    Grouping: \( \)
+    .
+    *
+    \+
+    \0 Whole matched pattern
+    \1 Matched pattern in the first grouping
+    \n Matched pattern in the nth grouping
+
+WINDOW SPLITS
+-------------
+
+    :sp[lit]  (horizontal split) 
+    :vsp[lit] (vertical split)
+
+    :vsp FILENAME (open a another file)
+
+
+Moving Among Splits
+===================
+
+    C-W {hjkl}
+
+
+Resizing Windows
+================
+
+    :set mouse=a (Lets you drag the split bar with a mouse)
+    C-W =        (equalize dimensions)
+    C-W >        (move split bar right)
+    C-W <        (move split bar left)
+
+
+Scrolling
+=========
+
+    :set scrollbind
+
+MACROS
+------
+
+Macros are just a series of keystrokes saved in a register.
+
+    q{a-z} (start recording macro into register {a-z})
+    q      (stop recording macro)
+    @{a-z} (run macro in register {a-z})
+    @@     (run most recently-run macro)
+
+Macros can be recursive!
+
+If autoformatting causes a line to wrap while recording a macro, disable by
+using
+
+    :set paste
+
+
+Editing a Register
+==================
+
+    :let @x='andrew'
+    :let @x='C-R C-R {a-z}'
+             -------------
+
+Random Cool Thing
+=================
+
+    C-A increments numbers
+    C-X decrements numbers
+
+/*
+ * Need a data structure that looks like
+ * 
+ * {
+ *      red : {
+ *          hex : ...
+ *          lab : ...
+ *          rgb : ...
+ *      },
+ *      blue : { ... }
+ * }
+ */
+
+const BUCKETS = [
+    {COL:"red",    HEX:"#EE2725", LAB:[52,72,52], RGB:[238,39,37]},
+    {COL:"blue",   HEX:"#3A6CC9", LAB:[47,15,-53], RGB:[58,108,201]}, 
+    {COL:"green",  HEX:"#20AA31", LAB:[61,-59,50], RGB:[32,170,49]}, 
+    {COL:"yellow", HEX:"#FFFF00", LAB:[97,-22,94], RGB:[255,255,0]}, 
+    {COL:"pink",   HEX:"#FF00AE", LAB:[60,98,-15], RGB:[255,0,174]},
+    {COL:"orange", HEX:"#FF8000", LAB:[67,43,74], RGB:[255,128,0]},
+    {COL:"teal",   HEX:"#008080", LAB:[48,-29,-8], RGB:[0,128,128]}, 
+    {COL:"purple", HEX:"#800080", LAB:[30,59,-36], RGB:[128,0,128]}, 
+    {COL:"white",  HEX:"#FFFFFF", LAB:[100,0,0], RGB:[255,255,255]}, 
+    {COL:"black",  HEX:"#000000", LAB:[0,0,0], RGB:[0,0,0]},
+    {COL:"gray",   HEX:"#777777", LAB:[54,0,0], RGB:[119,119,119]},
+    {COL:"brown",  HEX:"#6D2F10", LAB:[28,26,32], RGB:[109,47,16]} 
+];
+
+The Answer: xkyt.jP00j@o
+
+1. foo
+1. bar
+1. baz
+1. foo
+1. bar
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+1. baz
+
+FORMATTING
+----------
+
+    gq{motion} (formats text according to filetype, textwidth)
+
+
+    Simple example. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Vestibulum eu lectus eget mi consequat vestibulum. Aliquam velit ante,
+    I've started adding text here.
+    and here
+    and here
+    commodo at sollicitudin a, congue viverra erat.  Lorem ipsum dolor sit
+    amet, consectetur adipiscing elit.  Donec tincidunt ipsum vitae odio
+    imperdiet fringilla.  Aliquam tortor arcu, sodales a tincidunt in, Oh and I added something to the end of this line.
+    posuere at tortor.
+
+/**
+ * Here is the description of the function. I can keep writing stuff or use gqj to format this comment.
+ */
+function foo() {
+
+    // Here is an inline comment explaining something about something. It's very long but can easily be formatted with gqj.
+    // This next part is on another line.
+    // And so is this.
+    // gq{motion will figure out how to format the entire thing.
+    return true;
+}
+
+PLUGINS
+-------
+
+    NERD Tree (interactive directory listing)
+
+    Supertab  (auto-completion)
+
+        function() {
+            someReallyLongVariable =1;
+            someOtherVariable = 2;
+            somethingElse = 3;
+        }
+
+    SnipMate  (TextMate-style snippets)
+
+        (See example)
+
+    Ctrl-P    (File access like Sublime's Ctrl-P)
+
+// cl<TAB>     class snippet
+// main<TAB>   main() snippet
+// m<TAB>      method snippet
+// t<TAB>      test method snippet
+
+PLUGIN INSTALLATION
+-------------------
+
+Unpack plugin files into .vim/.
+
+    unzip plugin.zip ~/.vim/
+
+    vim plugin.vba (sometimes .vmb)
+    :source % 
+
+.vimrc needs:
+
+    filetype on
+    filetype plugin on
+
+var SearchResultsView = Backbone.View.extend({
+	el : 'body',
+	app : SELECTORS.app,
+	template: jade.templates.search,
+	
+	LOG : new Logger({
+		module : 'search',
+		prefix : 'SearchResults VIEW'
+	}),
+
+	events : {
+		'submit #search-form' : 'updateQuery',
+		'keydown #search-input' : 'validateQuery',
+		'click a.page-link' : 'updatePage',
+		'click .adi-sort-pref' : 'updateSort',
+		'click #toggle-autocomplete': 'toggleTypeahead'
+	},
+
+	initialize : function(options) {
+		var view = this;
+		this.LOG.debug('Initializing SearchResultsView with options:', options);
+		if (!options.model) throw new Error('SearchResultsView was not initialized with a SearchQueryModel');
+
+		// Initialize Spinner
+		this.spinner = new Spinner(SPINNER_CONFIG);
+
+		// Cache app DOM selector
+		this.$app = $(this.app);
+
+		// Attach Model to View
+		this.model = options.model;
+		this.model.on('change parse error', this.render, this);
+		this.model.on('request', this.showSpinner, this);
+
+		// Initialize Instant Search
+		this.renderInstantSearchView = _.debounce(this.updateQuery, 500);
+
+		// Initialize typeahead UI Component
+		this.LOG.debug("typeahead component", $(SELECTORS.searchInput));
+		$(SELECTORS.searchInput).typeahead(TYPEAHEAD_CONFIG);
+	},
+
+	/**
+	 * Rendering the search results view. Calls the server for an HTML
+	 * fragment of search results, focuses the search input box, and
+	 * initializes the popover code that enables the thumbnanil hover
+	 * effect.
+	 */
+	render : function(model, response) {
+		this.LOG.debug('Rendering SearchResults view', arguments);
+		var view = this;
+		var renderingContext = this.model.toContext();
+
+		// Validate response
+		renderingContext.error = (response && response.status === 500);
+
+		// Render View
+		var templateOutput = this.template(renderingContext);
+		this.$app.html(templateOutput);
+
+		// Update route
+		this.updateRouter();
+
+		// Update typeahead UI Component
+		$(SELECTORS.searchInput).typeahead(TYPEAHEAD_CONFIG).val(this.model.get('q'));
+		$(SELECTORS.searchBox).fadeIn('slow');
+		
+		if (this.model.get("autocomplete")) {
+			var $toggleTypeaheadCheckbox = $(SELECTORS.toggleAutocomplete);
+			$toggleTypeaheadCheckbox.attr('checked', true);
+			this.toggleTypeahead();
+		}
+
+		// Initialize Bootstrap Popover on thumbnail images
+		$(SELECTORS.popoverThumbnail).popover({
+		    trigger : 'hover',
+		    html : 'true', // Lets us insert HTML into the popover
+		    content : function() {
+		        // Set the height of the image manually. Otherwise,
+		        // by the time the image loads, Bootstrap will have
+		        // computed an incorrect position.
+		        var height = $(this).attr('data-height');
+		        var imageTag = sprintf('<img class="adi-popover" style="height:%spx" src="%s" alt="thumbnail"/>', height, $(this).attr('data-img-src-full'));
+
+		        return imageTag;;
+		    }
+		});
+
+        // Update Date Range Picker UI Component
+        $('.daterangepicker').remove(); 
+		var $dateRangePicker = $(SELECTORS.dateRangePicker)
+		$dateRangePicker.daterangepicker(DATE_RANGE_PICKER_CONFIG, DATE_RANGE_PICKER_CONFIG.filterHandler);
+		
+		var currentDateRangeQuery = this.model.getDateRangeFilter() || DATE_RANGE_PICKER_CONFIG.ranges[DATE_RANGE_EVERYTHING_LABEL];
+		DATE_RANGE_PICKER_CONFIG.filterHandler(currentDateRangeQuery[0], currentDateRangeQuery[1], $dateRangePicker);
+
+		$dateRangePicker.on('change', $.proxy(view.updateDateRange, this));
+	},
+
+	/**
+	 * Updates Date Range query
+	 */
+	updateDateRange : function(event) {		
+		var $dateRangePicker = $(SELECTORS.dateRangePicker);
+		
+		var startDate = $dateRangePicker.data(START_DATE_DATA_ATTRIBUTE);
+		var endDate = $dateRangePicker.data(END_DATE_DATA_ATTRIBUTE);
+		
+		this.model.setDateRangeFilter(startDate, endDate);
+		this.model.fetch();
+		
+		LOG.log("Updating Date Range Filter: %s", this.model.get("q"), this.model.getQueryString());
+	},
+
+	/**
+	 * Updates Router
+	 */
+	updateRouter : function() {
+		router.navigate('search?' + this.model.getQueryString());
+	},
+
+	/**
+	 * Show Spinner while view is loading and hide when completed
+	 */
+	showSpinner: function() {
+		this.LOG.debug('Loading Search Results', arguments);
+		if (this.$app.length > 0) {
+			this.$app.html('');
+			this.spinner.spin(this.$app[0]);
+		}
+	},
+
+	/**
+	 * Toggles Type-ahead functionality on Search Input
+	 */
+	toggleTypeahead: function(event) {
+		var $toggleTypeaheadCheckbox = $(SELECTORS.toggleAutocomplete);
+		var $searchInput = $(SELECTORS.searchInput);
+		var enableTypeahead = $toggleTypeaheadCheckbox.is(":checked");
+		$searchInput.data('autocomplete', enableTypeahead);
+		
+		if (enableTypeahead) {
+			this.model.updateQuery({ autocomplete: enableTypeahead });
+		} else {
+			this.model.unset('autocomplete', { silent: true });
+		}
+
+		this.updateRouter();
+		// if (enableAutocomplete) {
+		// 	this.LOG.debug("Enabling Auto-complete");
+		// 	$searchInput.typeahead(TYPEAHEAD_CONFIG);
+		// } else {
+		// 	this.LOG.debug("Disabling Auto-complete");
+		// 	$searchInput.unbind();
+		// }
+	},
+
+	/**
+	 * Validates search query
+	 */
+	validateQuery : function(event) {
+		var $searchInput = $(SELECTORS.searchInput);
+		var $searchButton = $(SELECTORS.searchButton);
+		var query = $searchInput.val();
+
+		LOG.info("Validating query", event, query, this.model, this.model.get("q"));
+		// Disable Search Input if query is unchanged
+		// if (query === this.model.get("q")) {
+		// 	LOG.debug("Ignoring query since it hasn't changed", $searchButton[0]);
+		// 	$searchButton.addClass("disabled").attr("disabled", "disabled");
+		// } else {
+		// 	$searchButton.removeClass("disabled").removeAttr("disabled");
+		// }
+
+		// Validate query against lucene query parser
+		// var isValidQuery;
+		// try {
+		// 	var parseTree = LuceneQueryParser.parse(query);
+		// 	$searchButton.removeClass("btn-danger").addClass("btn-octopusInk").button("reset");
+		// 	$searchInput.removeClass("error").addClass("success");
+		// 	isValidQuery = true;
+		// } catch (error) {
+		// 	isValidQuery = false;
+		// 	$searchButton.removeClass("btn-octopusInk").addClass("btn-danger").button("loading");
+		// 	$searchInput.removeClass("success").addClass("error");
+		// }
+
+		// this.model.isValid = isValidQuery;
+		// return isValidQuery;
+		// return true;
+	},
+
+	/**
+	 * Updates the query parameter in SearchQueryModel
+	 */
+	updateQuery : function(event) {
+		event.preventDefault();
+		
+		// if (!this.validateQuery()) {
+		// 	return;
+		// }
+
+		var $searchInput = $(SELECTORS.searchInput);
+		var $searchButton = $(SELECTORS.searchButton);
+		var query = $searchInput.val();
+
+		// if (query === this.model.get('q')) {
+		// 	this.LOG.debug("Ignoring query since it hasn't changed");
+		// } else {
+		// 	this.LOG.debug('Updating query with value from input field "' + query + '"');
+		// 	this.model.updateQuery({ q : query, fq : [], page : 1 }); // Reset the page to 1 for the new query
+		// 	this.model.fetch();
+		// 	// $searchButton.addClass("disabled").attr("disabled", "disabled");
+		// }
+		// 
+		this.LOG.debug('Updating query with value from input field "' + query + '"');
+		this.model.updateQuery({ q : query, fq : [], page : 1 }); // Reset the page to 1 for the new query
+		this.model.fetch();
+	},
+
+	/**
+	 * Renders Instant Search Results without the user clicking on search button
+	 * This function is setup when model is initialized
+	 */
+	renderInstantSearchView: null,
+
+	/**
+	 * Updates the page parameter.
+	 */
+	updatePage : function(e) {
+		e.preventDefault();
+		var page = $(e.currentTarget).attr('data-page');
+		this.LOG.debug('Updating page to "' + page + '" after user click');
+		// "Pages" in the web UI are always 1 greater than Solr's "start" parameter.
+		this.model.set({ page : page }, { silent: true });
+		this.model.fetch();
+	},
+
+	/**
+	 * Updates the sort query
+	 */
+	updateSort : function(e) {
+		e.preventDefault();
+		var field = $(e.currentTarget).attr('data-field')
+		  , order = $(e.currentTarget).attr('data-order');
+		this.LOG.debug(sprintf('Updating sort query to %s %s and resetting to page 1', field, order));
+
+		// The relevancy sort is default; we can just clear out the sort
+		// property of the model.
+		var sortFilter = (field === 'relevance') ? [] : [{ field : field, order : order }];
+		this.model.set({ 
+            sort : sortFilter,
+            page : 1 // Reset the page when a new sort order is selected
+        }, { silent: true });
+		this.model.fetch();
+
+		// Hide the dropdown menu
+		$(this).closest('.dropdown-menu').hide();
+	}
+}
+
+NERD TREE
+---------
+
+    :map <C-N> <esc>:NERDTreeToggle<CR>
+
+    ? for help
+
+COLORS
+------
+
+    :colorscheme (echos the current colorscheme)
+    :colorscheme elflord (sets colorscheme to elflord)
+
+Some common color schemes
+=========================
+
+    elflord
+    pablo
+    desert
+    solorized (Google "Vim solarized colorscheme")
+
+See how everything is currently highlighted
+===========================================
+
+    :hi[light]
+
+// :set foldmethod=indent
+// :set fdm=indent
+// zo   Open a fold
+// zc   Close a fold
+// zO   Open a fold and all it's subfolds
+// zr   Reduce folding level by one throughout
+// zR   Open all folds
+// zm   More folds. Closes lower-level folds throuhout
+// zM   Close all folds
+var SearchResultsView = Backbone.View.extend({
+	initialize : function(options) {
+        
+        var r = function() {
+            // This is a pointless function with a bunch of nesting
+            var s = function() {
+                // This is a function with more nesting
+                var t = function() {
+                    var x = 2;
+                    var y = 3;
+                    var z = 4;
+                    return x + y + z;
+                };
+                return t();
+            };
+            return s();
+        };
+		var view = this;
+		this.LOG.debug('Initializing SearchResultsView with options:', options);
+		if (!options.model) throw new Error('SearchResultsView was not initialized with a SearchQueryModel');
+
+		// Initialize Spinner
+		this.spinner = new Spinner(SPINNER_CONFIG);
+
+		// Cache app DOM selector
+		this.$app = $(this.app);
+
+		// Attach Model to View
+		this.model = options.model;
+		this.model.on('change parse error', this.render, this);
+		this.model.on('request', this.showSpinner, this);
+
+		// Initialize Instant Search
+		this.renderInstantSearchView = _.debounce(this.updateQuery, 500);
+
+		// Initialize typeahead UI Component
+		this.LOG.debug("typeahead component", $(SELECTORS.searchInput));
+		$(SELECTORS.searchInput).typeahead(TYPEAHEAD_CONFIG);
+	},
+
+	/**
+	 * Rendering the search results view. Calls the server for an HTML
+	 * fragment of search results, focuses the search input box, and
+	 * initializes the popover code that enables the thumbnanil hover
+	 * effect.
+	 */
+	render : function(model, response) {
+		this.LOG.debug('Rendering SearchResults view', arguments);
+		var view = this;
+		var renderingContext = this.model.toContext();
+
+		// Validate response
+		renderingContext.error = (response && response.status === 500);
+
+		// Render View
+		var templateOutput = this.template(renderingContext);
+		this.$app.html(templateOutput);
+
+		// Update route
+		this.updateRouter();
+
+		// Update typeahead UI Component
+		$(SELECTORS.searchInput).typeahead(TYPEAHEAD_CONFIG).val(this.model.get('q'));
+		$(SELECTORS.searchBox).fadeIn('slow');
+		
+		if (this.model.get("autocomplete")) {
+			var $toggleTypeaheadCheckbox = $(SELECTORS.toggleAutocomplete);
+			$toggleTypeaheadCheckbox.attr('checked', true);
+			this.toggleTypeahead();
+		}
+
+		// Initialize Bootstrap Popover on thumbnail images
+		$(SELECTORS.popoverThumbnail).popover({
+		    trigger : 'hover',
+		    html : 'true', // Lets us insert HTML into the popover
+		    content : function() {
+		        // Set the height of the image manually. Otherwise,
+		        // by the time the image loads, Bootstrap will have
+		        // computed an incorrect position.
+		        var height = $(this).attr('data-height');
+		        var imageTag = sprintf('<img class="adi-popover" style="height:%spx" src="%s" alt="thumbnail"/>', height, $(this).attr('data-img-src-full'));
+
+		        return imageTag;;
+		    }
+		});
+
+        // Update Date Range Picker UI Component
+        $('.daterangepicker').remove(); 
+		var $dateRangePicker = $(SELECTORS.dateRangePicker)
+		$dateRangePicker.daterangepicker(DATE_RANGE_PICKER_CONFIG, DATE_RANGE_PICKER_CONFIG.filterHandler);
+		
+		var currentDateRangeQuery = this.model.getDateRangeFilter() || DATE_RANGE_PICKER_CONFIG.ranges[DATE_RANGE_EVERYTHING_LABEL];
+		DATE_RANGE_PICKER_CONFIG.filterHandler(currentDateRangeQuery[0], currentDateRangeQuery[1], $dateRangePicker);
+
+		$dateRangePicker.on('change', $.proxy(view.updateDateRange, this));
+	},
+
+	/**
+	 * Updates Date Range query
+	 */
+	updateDateRange : function(event) {		
+		var $dateRangePicker = $(SELECTORS.dateRangePicker);
+		
+		var startDate = $dateRangePicker.data(START_DATE_DATA_ATTRIBUTE);
+		var endDate = $dateRangePicker.data(END_DATE_DATA_ATTRIBUTE);
+		
+		this.model.setDateRangeFilter(startDate, endDate);
+		this.model.fetch();
+		
+		LOG.log("Updating Date Range Filter: %s", this.model.get("q"), this.model.getQueryString());
+	},
+
+	/**
+	 * Updates Router
+	 */
+	updateRouter : function() {
+		router.navigate('search?' + this.model.getQueryString());
+	},
+
+	/**
+	 * Show Spinner while view is loading and hide when completed
+	 */
+	showSpinner: function() {
+		this.LOG.debug('Loading Search Results', arguments);
+		if (this.$app.length > 0) {
+			this.$app.html('');
+			this.spinner.spin(this.$app[0]);
+		}
+	},
+
+	/**
+	 * Toggles Type-ahead functionality on Search Input
+	 */
+	toggleTypeahead: function(event) {
+		var $toggleTypeaheadCheckbox = $(SELECTORS.toggleAutocomplete);
+		var $searchInput = $(SELECTORS.searchInput);
+		var enableTypeahead = $toggleTypeaheadCheckbox.is(":checked");
+		$searchInput.data('autocomplete', enableTypeahead);
+		
+		if (enableTypeahead) {
+			this.model.updateQuery({ autocomplete: enableTypeahead });
+		} else {
+			this.model.unset('autocomplete', { silent: true });
+		}
+
+		this.updateRouter();
+		// if (enableAutocomplete) {
+		// 	this.LOG.debug("Enabling Auto-complete");
+		// 	$searchInput.typeahead(TYPEAHEAD_CONFIG);
+		// } else {
+		// 	this.LOG.debug("Disabling Auto-complete");
+		// 	$searchInput.unbind();
+		// }
+	},
+
+	/**
+	 * Validates search query
+	 */
+	validateQuery : function(event) {
+		var $searchInput = $(SELECTORS.searchInput);
+		var $searchButton = $(SELECTORS.searchButton);
+		var query = $searchInput.val();
+
+		LOG.info("Validating query", event, query, this.model, this.model.get("q"));
+		// Disable Search Input if query is unchanged
+		// if (query === this.model.get("q")) {
+		// 	LOG.debug("Ignoring query since it hasn't changed", $searchButton[0]);
+		// 	$searchButton.addClass("disabled").attr("disabled", "disabled");
+		// } else {
+		// 	$searchButton.removeClass("disabled").removeAttr("disabled");
+		// }
+
+		// Validate query against lucene query parser
+		// var isValidQuery;
+		// try {
+		// 	var parseTree = LuceneQueryParser.parse(query);
+		// 	$searchButton.removeClass("btn-danger").addClass("btn-octopusInk").button("reset");
+		// 	$searchInput.removeClass("error").addClass("success");
+		// 	isValidQuery = true;
+		// } catch (error) {
+		// 	isValidQuery = false;
+		// 	$searchButton.removeClass("btn-octopusInk").addClass("btn-danger").button("loading");
+		// 	$searchInput.removeClass("success").addClass("error");
+		// }
+
+		// this.model.isValid = isValidQuery;
+		// return isValidQuery;
+		// return true;
+	},
+
+	/**
+	 * Updates the query parameter in SearchQueryModel
+	 */
+	updateQuery : function(event) {
+		event.preventDefault();
+		
+		// if (!this.validateQuery()) {
+		// 	return;
+		// }
+
+		var $searchInput = $(SELECTORS.searchInput);
+		var $searchButton = $(SELECTORS.searchButton);
+		var query = $searchInput.val();
+
+		// if (query === this.model.get('q')) {
+		// 	this.LOG.debug("Ignoring query since it hasn't changed");
+		// } else {
+		// 	this.LOG.debug('Updating query with value from input field "' + query + '"');
+		// 	this.model.updateQuery({ q : query, fq : [], page : 1 }); // Reset the page to 1 for the new query
+		// 	this.model.fetch();
+		// 	// $searchButton.addClass("disabled").attr("disabled", "disabled");
+		// }
+		// 
+		this.LOG.debug('Updating query with value from input field "' + query + '"');
+		this.model.updateQuery({ q : query, fq : [], page : 1 }); // Reset the page to 1 for the new query
+		this.model.fetch();
+	},
+
+	/**
+	 * Renders Instant Search Results without the user clicking on search button
+	 * This function is setup when model is initialized
+	 */
+	renderInstantSearchView: null,
+
+	/**
+	 * Updates the page parameter.
+	 */
+	updatePage : function(e) {
+		e.preventDefault();
+		var page = $(e.currentTarget).attr('data-page');
+		this.LOG.debug('Updating page to "' + page + '" after user click');
+		// "Pages" in the web UI are always 1 greater than Solr's "start" parameter.
+		this.model.set({ page : page }, { silent: true });
+		this.model.fetch();
+	},
+
+	/**
+	 * Updates the sort query
+	 */
+	updateSort : function(e) {
+		e.preventDefault();
+		var field = $(e.currentTarget).attr('data-field')
+		  , order = $(e.currentTarget).attr('data-order');
+		this.LOG.debug(sprintf('Updating sort query to %s %s and resetting to page 1', field, order));
+
+		// The relevancy sort is default; we can just clear out the sort
+		// property of the model.
+		var sortFilter = (field === 'relevance') ? [] : [{ field : field, order : order }];
+		this.model.set({ 
+            sort : sortFilter,
+            page : 1 // Reset the page when a new sort order is selected
+        }, { silent: true });
+		this.model.fetch();
+
+		// Hide the dropdown menu
+		$(this).closest('.dropdown-menu').hide();
+	}
+}
+
+
+USEFUL - TABS
+-------------
+
+Problem: someone used actual tab characters and you can't find your Zen.
+
+
+From tabs -> spaces
+===================
+
+        :retab (uses default tabstop width to expands tabs to spaces)
+
+		// This function is tabbed with tabs, and it's ugly.
+		function foo() {
+			if (bar) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+
+        // This function is tabbed with spaces
+        function bar() {
+            if (baz) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+USEFUL - NEWLINES
+-----------------
+
+Problem: Although Vim normally has no problem handling DOS- and
+UNIX-style line endings transparently, sometimes a file has both CRLF (DOS)
+and LF (UNIX) line endings. Whenever a CR appears, Vim will display a ^M
+character.
+
+
+From DOS/UNIX to UNIX
+=====================
+
+    :update
+    :e ++ff=dos
+    :setlocal ff=unix
+    :w
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Vestibulum eu lectus eget mi consequat vestibulum. Aliquam
+    velit ante, commodo at sollicitudin a, congue viverra erat.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Donec tincidunt ipsum vitae odio imperdiet fringilla.
+    Aliquam tortor arcu, sodales a tincidunt in, posuere at
+    tortor.
+
+
+From DOS/UNIX to DOS
+=====================
+
+    :update
+    :e ++ff=dos
+    :w
+
+USEFUL - LINE WRAPPING
+----------------------
+
+    :set wrap
+    :set nowrap
+    :map <leader>w <ESC>:set nowrap<CR>
+
+Executing: SELECT * FROM `performances` WHERE `performances`.`dim_date_id`='benchmark' LIMIT 1;
+
+/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/longjohn/dist/longjohn.js:181
+        throw e;
+              ^
+Error: ER_BAD_FIELD_ERROR: Unknown column 'performances.dim_date_id' in 'where clause'
+    at Sequence._packetToError (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/node_modules/mysql/lib/protocol/sequences/Sequence.js:32:14)
+    at Query.ErrorPacket (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/node_modules/mysql/lib/protocol/sequences/Query.js:78:18)
+    at Protocol._parsePacket (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/node_modules/mysql/lib/protocol/Protocol.js:169:24)
+    at Parser.write (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/node_modules/mysql/lib/protocol/Parser.js:62:12)
+    at Protocol.write (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/node_modules/mysql/lib/protocol/Protocol.js:36:16)
+    at ondata (stream.js:38:26)
+    at EventEmitter.emit (events.js:88:17)
+    at TCP.onread (net.js:403:14)
+    --------------------
+    at Sequence (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/node_modules/mysql/lib/protocol/sequences/Sequence.js:15:21)
+    at new Query (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/node_modules/mysql/lib/protocol/sequences/Query.js:11:12)
+    at Connection.createQuery (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/node_modules/mysql/lib/Connection.js:43:10)
+    at Connection.query (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/node_modules/mysql/lib/Connection.js:90:26)
+    at module.exports.Query.run (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/lib/dialects/mysql/query.js:26:17)
+    at module.exports.execQueueItem (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/lib/dialects/mysql/connector-manager.js:223:21)
+    at module.exports.enqueue (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/lib/dialects/mysql/connector-manager.js:177:25)
+    at adjustCallback (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/node_modules/generic-pool/lib/generic-pool.js:187:7)
+    at exports.Pool.me.acquire (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/node_modules/generic-pool/lib/generic-pool.js:230:15)
+    at module.exports.connect (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/lib/dialects/mysql/connector-manager.js:160:5)
+---------------------------------------------
+    at module.exports.CustomEventEmitter.run (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/lib/emitters/custom-event-emitter.js:14:5)
+    at module.exports.queryAndEmit (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/lib/query-interface.js:276:8)
+    at module.exports.QueryInterface.select (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/lib/query-interface.js:199:25)
+    at module.exports.DAOFactory.find (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/sequelize/lib/dao-factory.js:212:32)
+    at module.exports.getperformanceByDate (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/src/activities/get_performance.js:21:6)
+    at module.exports.handler (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/src/activities/get_performance.js:9:9)
+    at callbacks (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/express/lib/router/index.js:160:37)
+    at param (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/node_modules/express/lib/router/index.js:134:11)
+---------------------------------------------
+    at new Server (http.js:1619:10)
+    at exports.createServer (http.js:1636:10)
+    at initializeServer (/local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/src/app.js:41:10)
+    at /local/apollo/package/local_1/Generic/D16GAdInsights/D16GAdInsights-28.0-0/src/app.js:51:5
+    at exports.getCredentialPairs (/local/apollo/package/local_1/Generic/NodeJS-AmazonUtils/NodeJS-AmazonUtils-124.0-0/lib/commonjs/amazon-utils/src/tools/OdinClient.js:99:17)
+    at exports.getMaterialPair (/local/apollo/package/local_1/Generic/NodeJS-AmazonUtils/NodeJS-AmazonUtils-124.0-0/lib/commonjs/amazon-utils/src/tools/OdinClient.js:75:21)
+    at GenericHTTPClient.request.responseHandler (/local/apollo/package/local_1/Generic/NodeJS-AmazonUtils/NodeJS-AmazonUtils-124.0-0/lib/commonjs/amazon-utils/src/common/GenericHTTPClient.js:77:21)
+    at EventEmitter.emit (events.js:115:20)
+
+USEFUL - HANDLE POUND COMMENTS
+------------------------------
+
+if () {
+    then do this;
+} else {
+}
+
+
+PASTE STUFF FROM THE OUTSIDE WORLD
+----------------------------------
+
+Sometimes when you paste stuff from your clipboard weird stuff happens (i.e.,
+might treat certain characters as Vim command input).
+
+    :set paste
+
+JUMP TO PREVIOUS POSITION (WITHOUT MARKS)
+-----------------------------------------
+
+    g;  Go to [count] older position in the change list
+    g,  Go to [count] new position in the change list
+
+WEIRD - BACKSPACE
+-----------------
+
+    set backspace=indent,eol,start "Fixes super weird backspace problem
+
+COMMAND HISTORY
+---------------
+
+    q:  (Get command history in another buffer)
+
+Move around and edit like any other buffer. Run a command by pressing ENTER
+on a line.
+
+SPELL CHECK
+-----------
+
+    :set spell
+    :set nospell
+
+let mapleader = "," "Used as a prefix to let you namespace arbitrary commands
+
+syntax enable "Syntax highlighting
+set number    "Line numbering
+set vb        "Flashes screen on errors
+set hlsearch  "Highlights search terms
+
+"A bunch of indentation stuff.
+set smartindent    "Be smart about indenting (esp. C-like languages)
+set autoindent     "Open lines at same indentation level
+set expandtab      "Automatically turn TABs into 'tabstop' spaces
+set tabstop=4      "1 tab = 4 spaces
+set shiftwidth=4   "Shift operators move 4 spaces at a time
+set softtabstop=4  "Among other things, this causes <BS> to go back 4 spaces
+
+set textwidth=76   "Exactly what it sounds like
+set wildmenu       "For helpful tab completion on say, :vsp <PATH_PREFIX>
+set mouse=a        "Allows the use of the mouse in all modes. Not useful in Mac Terminal
+set cursorline     "Highlights/underlines the current line
+set ruler          "Shows the cursor position in bottom right
+"set cc=80         "Draw a bar at 80 characters
+set backspace=indent,eol,start "Fixes super weird backspace problem
+set nospell
+
+colorscheme elflord
+
+filetype on "Enable filetype detection
+filetype plugin on "Enables filetype-specific plugins
+filetype plugin indent on "Tries to fix indenting of # comments
+au! FileType python setl nosmartindent
+
+"Remembers where the cursor left off for each file
+autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+
+"Some sort of hack to get the above to work
+au BufWinLeave * mkview
+au BufWinEnter * silent loadview
+
+map <C-N>  <esc>:NERDTreeToggle<CR>
+nmap <space> zz
+nmap <C-H> <C-W>h
+nmap <C-L> <C-W>l
+nmap <C-J> <C-W>j
+nmap <C-K> <C-W>k
+nmap <C-P> <C-W>k
+"Note that <CR> is used for ENTER
+imap <leader>wq <esc>:wq<CR>
+"Helpful esp. in Git Diff
+map <F2> <esc>:qall<CR>
+map <leader>w <esc>:set nowrap<CR>
+"The ! means toggle
+map <leader>cl <esc>:set cursorline!<CR>
+":inoremap # X#  "Note that ^H is entered with Ctrl-V Ctrl-H
+
+"Open .pde files as C-type files
+au BufNewFile,BufRead *.pde set filetype=cpp
+
+"Some custom colors
+hi Visual ctermfg=Black
+hi Visual ctermbg=Yellow
+hi clear CursorLine
+hi CursorLine ctermfg=15 ctermbg=9
+hi Pmenu cterm=bold,reverse ctermfg=0 ctermbg=15
+hi PmenuSel term=reverse ctermfg=15 ctermbg=9
+hi LineNr ctermfg=8
+"hi Normal ctermfg=White
+
+USEFUL - GIT
+------------
+
+Vim's vimdiff tool can be integrated with Git! Open up diffs side-by-side in
+a vertically-split Vim window. Enter :qall to close both sides and open the
+next set diff set.
+
+~/.gitconfig:
+
+    [diff]
+        tool = vimdiff
+    [difftool]
+        prompt = false
+    [alias]
+        d = difftool
+
+Example
+=======
+
+    git d HEAD
+    git d HEAD~2 HEAD~3
+    git d feature-branch mainline
+
+MAKE VIM DEFAULT EDITOR
+-----------------------
+
+In ~/.zshrc
+
+    export EDITOR=vim
+
+
+Git commit messages are automatically highlighted correctly for you.
+
+VIM SCRIPTS
+-----------
+
+    Put vim scripts in your ~/.vim/plugin directory. They'll automatically
+    get picked up and processed by Vim.
+
+let g:logdir = '/tmp/'
+let g:logfile = 'vimlog.log'
+
+" ...because I can never remember
+"
+" (nothing) In a function: local to a function; otherwise: global
+" |buffer-variable|    b:   Local to the current buffer.
+" |window-variable|    w:   Local to the current window.
+" |tabpage-variable|   t:   Local to the current tab page.
+" |global-variable|    g:   Global.
+" |local-variable|     l:   Local to a function.
+" |script-variable|    s:   Local to a |:source|'ed Vim script.
+" |function-argument|  a:   Function argument (only inside a function).
+" |vim-variable|       v:   Global, predefined by Vim.
+
+
+" Checks if the current filename is g:logfile
+if  @% =~ '^.*' . g:logfile
+    " Don't run this script if we're editing the log file
+    echo "You\'re editing a log file and events will be ignored"
+    finish
+endif
+
+" let trackevents = ['CursorHold', 'CursorMoved', 'WinEnter', 'WinLeave', 'FocusGained', 'FocusLost', 'VimEnter', 'VimLeave', 'BufEnter', 'BufLeave']
+let trackevents = ['VimEnter', 'VimLeave', 'BufEnter', 'BufLeave']
+
+for event in trackevents
+    execute 'autocmd ' . event . ' * call Track("' . event . '")'
+endfor
+
+unlet event
+
+function Track(event)
+    if getftype(@%) == 'file'
+        let filename = substitute(@%, '^.*/', '', '')
+    else
+        let filename = @%
+    endif
+
+    if filename == ''
+        let filename = 'NO_FILE'
+    endif
+
+    let time = strftime('%c', localtime())
+    let line = printf('%-12s %-12s  %-11.11s %-.30s', localtime(), time, a:event, filename)
+
+    let escline = shellescape(line)
+    call Log(escline, g:logdir . g:logfile)
+
+    "silent execute '!echo ' . escline . ' >> ' . g:logdir . g:logfile
+endfunction
+
+function Log(msg, logfile)
+    silent execute '!echo ' . a:msg . ' >> ' . a:logfile
+endfunction
+
+OPEN TARBALLS, JARS,  AND ZIP FILES
+-----------------------------------
+
+    vim log4j.jar
+    vim nerdtree.zip
+    vim foo.tar.gz
+
