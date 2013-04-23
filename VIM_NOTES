@@ -59,6 +59,11 @@
         - \E or \e : End of \U or \L
         - \r : Newline
 
+= git =
+    - git d
+    - vimdiff
+    - commit messages
+
 = views: splits =
     - git d
     - :qall mapped to F2

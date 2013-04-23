@@ -48,7 +48,7 @@ nmap <C-P> <C-W>k
 imap <leader>wq <esc>:wq<CR>
 map <F2> <esc>:qall<CR>
 map <leader>w <esc>:set nowrap<CR>
-:inoremap # X#  "Note that ^H is entered with Ctrl-V Ctrl-H
+":inoremap # X#  "Note that ^H is entered with Ctrl-V Ctrl-H
 
 "Open .pde files as C-type files
 au BufNewFile,BufRead *.pde set filetype=cpp
