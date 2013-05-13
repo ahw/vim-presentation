@@ -63,7 +63,7 @@ au BufNewFile,BufRead *.pde set filetype=cpp
 hi Visual ctermfg=Black
 hi Visual ctermbg=Yellow
 hi clear CursorLine
-"hi CursorLine ctermfg=15 ctermbg=9
+hi CursorLine ctermbg=8
 hi Pmenu cterm=bold,reverse ctermfg=0 ctermbg=15
 hi PmenuSel term=reverse ctermfg=15 ctermbg=9
 hi LineNr ctermfg=8

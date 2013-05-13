@@ -47,6 +47,11 @@ function Track(event)
     let escline = shellescape(line)
     call Log(escline, g:logdir . g:logfile)
 
+    "Insert a newline after each VimLeave, for readability.
+    if a:event == 'VimLeave'
+        call Log(shellescape(""), g:logdir . g:logfile)
+    endif
+
     "silent execute '!echo ' . escline . ' >> ' . g:logdir . g:logfile
 endfunction
 
